@@ -1,3 +1,5 @@
+Forked from opsta to add mariabackup support. If you need mariabackup support then edit default/main.yml to enable mariabackup over innobackupex via the osa_backup_command variable.
+
 OpenStack Ansible backup
 =========
 
@@ -21,6 +23,7 @@ osa_backup_cron_day: "*"
 osa_backup_cron_month: "*"
 osa_backup_cron_weekday: "*"
 osa_backup_cron_command: "/usr/local/bin/openstack-ansible -i /opt/openstack-ansible/playbooks/inventory/dynamic_inventory.py /opt/openstack-ansible/playbooks/openstack-backup.yml"
+osa_backup_command: "innobackupex --compress --compress-threads=8 {{ osa_backup_remote_galera_dir }}"
 ```
 
 Dependencies
