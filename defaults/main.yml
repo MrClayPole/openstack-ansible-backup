@@ -11,3 +11,7 @@ osa_backup_cron_day: "*"
 osa_backup_cron_month: "*"
 osa_backup_cron_weekday: "*"
 osa_backup_cron_command: "/usr/local/bin/openstack-ansible -i /opt/openstack-ansible/playbooks/inventory/dynamic_inventory.py /opt/openstack-ansible/playbooks/openstack-backup.yml"
+
+# osa_backup command line tool to be used when exporting the databases. From mariadb 10.3 onwards precona/innobackupex backup is no longer available and mariabackup should be used in its palc$
+osa_backup_command: "innobackupex --compress --compress-threads=8 "{{ osa_backup_remote_galera_dir }}""
+#osa_backup_command: "mariabackup --backup --compress --compress-threads=8 --target-dir={{ osa_backup_remote_galera_dir }}/{{ ansible_date_time.iso8601_basic_short }}"
