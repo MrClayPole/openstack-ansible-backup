@@ -20,7 +20,7 @@
         mode: 0755
 
     - name: Backup galera server database
-      shell: innobackupex --compress --compress-threads=8 "{{ osa_backup_remote_galera_dir }}"
+      shell: "{{ osa_backup_command }}"
       delegate_to: "{{ groups['galera_all'] | last }}"
 
   tags:
